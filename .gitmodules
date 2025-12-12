@@ -1,0 +1,3 @@
+[submodule "apps/media-kraken"]
+	path = apps/media-kraken
+	url = https://github.com/existentialcoder/media-kraken
