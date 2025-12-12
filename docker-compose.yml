@@ -1,9 +1,9 @@
 version: '3.9'
 
 services:
-  css:
+  comm_server:
     image: solidproject/community-server:latest
-    container_name: css
+    container_name: comm_server
     ports:
       - "3000:3000"
     volumes:
@@ -17,9 +17,9 @@ services:
     image: media-kraken
     container_name: media-kraken
     ports:
-      - "8080:8080"
+      - "8080:80"
     depends_on:
-      - css
+      - comm_server
     environment:
       - NODE_ENV=development
     restart: unless-stopped
@@ -28,9 +28,9 @@ services:
     image: solid-cinema
     container_name: solid-vue-app
     ports:
-      - "8081:8081"
+      - "8081:80"
     depends_on:
-      - css
+      - comm_server
       - media-kraken
     environment:
       - NODE_ENV=development

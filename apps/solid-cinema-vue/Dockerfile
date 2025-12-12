@@ -13,7 +13,7 @@ FROM nginx:alpine
 
 COPY --from=build /app/dist /usr/share/nginx/html
 
-EXPOSE 8081
+EXPOSE 80
 
 # Start NGINX
 CMD ["nginx", "-g", "daemon off;"]
