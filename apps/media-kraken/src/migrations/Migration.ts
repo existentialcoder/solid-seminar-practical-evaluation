@@ -14,8 +14,16 @@ export default class Migration {
     }
 
     public isNecessary(storageVersion: string): boolean {
-        const [storageMajor, storageMinor, storagePatch] = Str.parseVersion(storageVersion)!;
-        const [migrationMajor, migrationMinor, migrationPatch] = Str.parseVersion(this.version)!;
+        const storageParts = Str.parseVersion(storageVersion);
+        const migrationParts = Str.parseVersion(this.version);
+
+        if (!storageParts || !migrationParts) {
+            console.warn(`Invalid version format: storage='${storageVersion}', migration='${this.version}'`);
+            return false; // or true, depending on your logic
+        }
+
+        const [storageMajor, storageMinor, storagePatch] = storageParts;
+        const [migrationMajor, migrationMinor, migrationPatch] = migrationParts;
 
         if (migrationMajor !== storageMajor)
             return migrationMajor > storageMajor;
@@ -25,6 +33,7 @@ export default class Migration {
 
         return migrationPatch > storagePatch;
     }
+
 
     public async apply(): Promise<string> {
         await this.migrationScript();
