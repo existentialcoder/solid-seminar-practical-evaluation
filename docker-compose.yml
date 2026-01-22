@@ -13,38 +13,13 @@ services:
       --port 3000
     restart: unless-stopped
 
-  media-kraken:
-    image: media-kraken
-    container_name: media-kraken
-    ports:
-      - "8080:8080"
-    depends_on:
-      - comm_server
-    environment:
-      - NODE_ENV=development
-    restart: unless-stopped
-
-  solid-vue-app:
-    image: solid-cinema
-    container_name: solid-vue-app
+  solid-cinema-vue:
+    build:
+      context: ./my-apps/solid-cinema-vue
+    image: solid-cinema-vue
     ports:
       - "8081:80"
-    depends_on:
-      - comm_server
-    environment:
-      - NODE_ENV=development
-    restart: unless-stopped
 
-  solid-file-manager:
-    image: solid-file-manager
-    container_name: solid-file-manager
-    ports:
-      - "8082:8082"
-    depends_on:
-      - comm_server
-    environment:
-      - NODE_ENV=development
-    restart: unless-stopped
 
 networks:
   default:
