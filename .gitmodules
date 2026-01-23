@@ -1,6 +1,0 @@
-[submodule "media-kraken"]
-	path = media-kraken
-	url = https://github.com/NoelDeMartin/media-kraken
-[submodule "third-party-apps/solid-file-manager"]
-	path = third-party-apps/solid-file-manager
-	url = https://github.com/solid/solid-file-manager

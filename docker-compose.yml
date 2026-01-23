@@ -7,8 +7,8 @@ services:
     ports:
       - "3000:3000"
     volumes:
-      - ./data:/data
-      - ./config:/config
+      - ./servers/css/data:/data
+      - ./servers/css/config:/config
     command: >
       --port 3000
     restart: unless-stopped
