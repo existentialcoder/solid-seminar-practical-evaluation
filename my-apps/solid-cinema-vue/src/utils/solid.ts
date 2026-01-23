@@ -27,7 +27,6 @@ export async function solidLogout() {
 
 export async function handleRedirect(): Promise<boolean> {
   await session.handleIncomingRedirect({ restorePreviousSession: true });
-  debugger;
   return session.info.isLoggedIn;
 }
 
@@ -58,8 +57,6 @@ export async function loadMovies(podUrl: string): Promise<MovieItem[]> {
     const dataset: SolidDataset = await getSolidDataset(playlistUrl, {
       fetch: solidSession().fetch,
     });
-
-    debugger;
 
     const urls = getContainedResourceUrlAll(dataset);
 
