@@ -1,0 +1,21 @@
+FROM node:22
+
+# Set working directory
+WORKDIR /app
+
+# Copy only the submodule
+COPY third-party-apps/solid-file-manager ./solid-file-manager
+
+WORKDIR /app/solid-file-manager
+
+# Install dependencies
+RUN npm install
+
+# Expose dev server port
+EXPOSE 8082
+
+# Ensure dev server binds to all interfaces
+ENV HOST=0.0.0.0
+
+# Run dev server
+CMD ["npm", "run", "dev"]

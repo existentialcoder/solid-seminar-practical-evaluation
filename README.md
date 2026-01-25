@@ -7,7 +7,9 @@
 - Make sure `docker` and `nvm` are pre-installed
 - Run all the applications using the below command
 
-``` sh
-chmod +x startup.sh
-./startup.sh
-```
+    ``` sh
+    docker compose up
+    ```
+- To bring down any of the service or all
+    ``` sh
+    docker compose down # Prefix with the app namer    ```

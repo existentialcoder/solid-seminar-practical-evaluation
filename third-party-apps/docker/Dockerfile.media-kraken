@@ -1,0 +1,22 @@
+FROM node:14.15.0
+
+WORKDIR /app
+
+# Copy submodule (read-only)
+COPY third-party-apps/media-kraken ./media-kraken
+
+# Inject patched vue.config.js
+COPY third-party-apps/docker/vue.config.media-kraken.js /app/media-kraken/vue.config.js
+
+WORKDIR /app/media-kraken
+
+# Optional: inject commit hash (safe default)
+ENV VUE_APP_COMMIT_HASH=docker
+
+# Install dependencies
+RUN npm install --legacy-peer-deps
+
+EXPOSE 8080
+ENV HOST=0.0.0.0
+
+CMD ["npm", "run", "serve"]

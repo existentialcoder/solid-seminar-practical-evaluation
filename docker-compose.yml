@@ -19,6 +19,27 @@ services:
     image: solid-cinema-vue
     ports:
       - "8081:80"
+  solid-file-manager:
+    container_name: solid-file-manager
+    build:
+      context: .
+      dockerfile: third-party-apps/docker/Dockerfile.solid-file-manager
+    ports:
+      - "8082:3001"
+    environment:
+      - HOST=0.0.0.0
+
+  media-kraken:
+    container_name: media-kraken
+    build:
+      context: .
+      dockerfile: third-party-apps/docker/Dockerfile.media-kraken
+    ports:
+      - "8080:8080"
+    environment:
+      - HOST=0.0.0.0
+    depends_on:
+      - solid-file-manager
 
 
 networks:
