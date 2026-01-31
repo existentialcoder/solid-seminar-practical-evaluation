@@ -5,7 +5,7 @@
 - For more details on my first Solid app, check [Solid Cinema](./my-apps/solid-cinema-vue/README.md)
 ## Setup
 - Clone the repository
-- Make sure `docker` and `nvm` are pre-installed
+- Make sure `docker` is pre-installed
 - Run all the applications using the below command
 
     ``` sh
